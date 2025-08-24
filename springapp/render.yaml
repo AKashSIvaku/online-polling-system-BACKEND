@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: online-polling-system-backend
+    env: java
+    plan: free
+    branch: main
+    buildCommand: "mvn clean package -DskipTests"
+    startCommand: "java -jar target/springapp-0.0.1-SNAPSHOT.jar"
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+      # Database connection (edit with your actual values)
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://your-db-host:3306/yourdbname
+      - key: SPRING_DATASOURCE_USERNAME
+        value: your_db_username
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: your_db_password
+      # Optional: JWT or custom secrets
+      - key: JWT_SECRET
+        value: change_this_to_a_secure_secret
